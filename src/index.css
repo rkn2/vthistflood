@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your global body styles that you had before can go here too */
+body {
+    font-family: 'Inter', sans-serif; /* Make sure 'Inter' is linked in your index.html */
+    scroll-behavior: smooth;
+    background-color: #f3f4f6; /* bg-gray-100 equivalent */
+    color: #1f2937; /* text-gray-800 equivalent */
+}
