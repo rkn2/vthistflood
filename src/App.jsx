@@ -91,7 +91,7 @@ const siteData = [
     // Design Phase Individual Steps
     {
         id: 'design-step-1', type: 'engineering-step', title: '1. Hire Design Professionals', previousStepId: 'design-section-hub', nextStepId: 'design-step-2',
-        content: { description: 'Engage qualified professionals, including:', items: ['<strong>Structural Engineer:</strong> To assess the building\'s structural integrity and design necessary modifications.', '<strong>Architect:</strong> With expertise in historic preservation to ensure adaptations are sensitive to the building\'s historical significance.', '<strong>Hydrologist/Civil Engineer:</strong> To analyze flood risks and design appropriate mitigation measures.'], caution: 'Experience with historic buildings is essential.' }
+        content: { description: 'Engage qualified professionals, including:', items: ['<strong>Structural Engineer:</strong> To assess the building\'s structural integrity and design necessary modifications.', '<strong>Architect:</strong> With expertise in historic preservation to ensure adaptations are sensitive to the building\'s historical significance.'], caution: 'Experience with historic buildings is essential.' }
     },
     {
         id: 'design-step-2', type: 'engineering-step', title: '2. Feasibility Study', previousStepId: 'design-step-1', nextStepId: 'design-step-3',
