@@ -71,8 +71,7 @@ const siteData = [
         actions: [
             { text: 'Design Phase', icon: 'fa-drafting-compass', target: 'design-section-hub', style: 'bg-blue-600 hover:bg-blue-500' },
             { text: 'Permitting & Bidding', icon: 'fa-file-signature', target: 'permitting-section-hub', style: 'bg-blue-600 hover:bg-blue-500' },
-            { text: 'Construction Phase', icon: 'fa-hard-hat', target: 'construction-section-hub', style: 'bg-blue-600 hover:bg-blue-500' },
-            { text: 'View Conclusion', icon: 'fa-flag-checkered', target: 'engineering-conclusion', style: 'bg-gray-500 hover:bg-gray-400' }
+            { text: 'Construction Phase', icon: 'fa-hard-hat', target: 'construction-section-hub', style: 'bg-blue-600 hover:bg-blue-500' }
         ]
     },
     // 4. Design Section Hub
