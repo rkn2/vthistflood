@@ -129,20 +129,8 @@ const siteData = [
                 content: { description: 'Execute the flood adaptation project according to the approved design and schedule.', items: [ '<strong>Review the Construction Schedule & Final Budget:</strong> Ensure the project stays on track and within budget.', '<strong>Build the Flood Adaptation:</strong> Oversee the construction process, ensuring compliance with the design documents, building codes, and historic preservation guidelines.' ] }
             }
         ],
-        nextSectionId: 'engineering-conclusion'
+        nextSectionId: 'landing-page'
     },
-    // 7. Engineering Guide Conclusion (Standalone Step Page)
-    {
-        id: 'engineering-conclusion',
-        type: 'engineering-step',
-        title: 'Engineering Guide: Conclusion',
-        previousStepId: 'construction-section-hub',
-        nextStepId: 'landing-page',
-        content: {
-            description: "Adapting historic buildings to flood risks requires a careful and methodical approach. By following these engineering steps and working with qualified professionals, it's possible to protect these valuable structures for future generations while preserving their unique heritage.",
-            note: "This guide provides a general framework. Specific requirements and processes may vary depending on local regulations and the unique characteristics of the historic building."
-        }
-    }
 ];
 
 
@@ -296,9 +284,11 @@ const EngineeringMainHubPage = ({ data, onNavigate }) => {
     );
 };
 
+// In src/App.jsx, inside the EngineeringSectionAccordionPage component
+
 // --- Engineering Section Accordion Page Component ---
 const EngineeringSectionAccordionPage = ({ data, onNavigate }) => {
-    const [openSteps, setOpenSteps] = useState({});
+    const [openSteps, setOpenSteps] = useState({}); // Ensure useState is imported from 'react'
 
     const toggleStep = (stepId) => {
         setOpenSteps(prevOpenSteps => ({
@@ -307,6 +297,30 @@ const EngineeringSectionAccordionPage = ({ data, onNavigate }) => {
         }));
     };
 
+    // Helper function to determine the text for the "Next" button
+    // Assumes 'siteData' is accessible from the module scope where this component is defined
+    const getNextButtonText = () => {
+        if (!data || !data.nextSectionId) return 'Next Section'; // Defensive check
+
+        if (data.nextSectionId === 'landing-page') {
+            return "Return to Main Menu";
+        }
+
+        const nextPage = siteData.find(p => p.id === data.nextSectionId);
+        return `Next: ${nextPage?.title || 'Next Section'}`; // Safely access title
+    };
+
+    // Helper function to determine the icon for the "Next" button
+    const getNextButtonIcon = () => {
+        if (!data || !data.nextSectionId) return "fa-arrow-right"; // Defensive check
+
+        if (data.nextSectionId === 'landing-page') {
+            return "fa-home"; // Home icon for returning to main menu
+        }
+        return "fa-arrow-right"; // Default next icon
+    };
+
+
     return (
         <section id={data.id} className="py-10">
             <h2 className="text-2xl sm:text-3xl font-semibold text-blue-800 mb-4">{data.title}</h2>
@@ -314,7 +328,8 @@ const EngineeringSectionAccordionPage = ({ data, onNavigate }) => {
                 <p className="text-gray-700 leading-relaxed">{data.introText}</p>
             </div>
             <div className="space-y-3 mb-8">
-                {data.steps.map(step => (
+                {/* Ensure data.steps is an array before mapping */}
+                {Array.isArray(data.steps) && data.steps.map(step => (
                     <div key={step.id} className="border border-gray-300 rounded-lg overflow-hidden">
                         <button
                             onClick={() => toggleStep(step.id)}
@@ -322,11 +337,12 @@ const EngineeringSectionAccordionPage = ({ data, onNavigate }) => {
                             aria-expanded={!!openSteps[step.id]}
                             aria-controls={`step-content-${step.id}`}
                         >
-                            {step.title} {/* Title is now displayed without numbers */}
+                            {step.title}
                             <i className={`fas ${openSteps[step.id] ? 'fa-chevron-up' : 'fa-chevron-down'} transition-transform`}></i>
                         </button>
                         {openSteps[step.id] && (
                             <div id={`step-content-${step.id}`} className="p-1">
+                                {/* Ensure StepContentDisplay is defined and imported if necessary */}
                                 <StepContentDisplay content={step.content} />
                             </div>
                         )}
@@ -334,6 +350,7 @@ const EngineeringSectionAccordionPage = ({ data, onNavigate }) => {
                 ))}
             </div>
             <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                {/* Ensure ActionButton is defined and imported if necessary */}
                 <ActionButton
                     text="Back to Engineering Guide"
                     icon="fa-arrow-left"
@@ -343,8 +360,8 @@ const EngineeringSectionAccordionPage = ({ data, onNavigate }) => {
                 />
                 {data.nextSectionId && (
                     <ActionButton
-                        text={`Next: ${siteData.find(p => p.id === data.nextSectionId)?.title || 'Next Section'}`}
-                        icon="fa-arrow-right"
+                        text={getNextButtonText()}
+                        icon={getNextButtonIcon()}
                         onClick={onNavigate}
                         targetId={data.nextSectionId}
                         styleClass="bg-green-600 hover:bg-green-500"
