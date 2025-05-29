@@ -5,6 +5,8 @@ export const siteData = [
         id: 'landing-page',
         type: 'landing',
         title: 'Adapting Historic Buildings for Flood Resilience',
+        // Add the new image URL property here
+        heroImageUrl: '/vthistflood/home-banner.jpg', // Assuming 'home-banner.jpg' is in your 'public' folder
         mainDescription: 'Protecting our heritage requires thoughtful planning and action. Choose your path below to learn more about engineering processes or available funding.',
         actions: [
             { text: 'View Engineering Guide', icon: 'fa-hard-hat', target: 'engineering-hub', style: 'bg-blue-600 hover:bg-blue-500' },
