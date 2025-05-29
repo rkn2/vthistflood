@@ -33,7 +33,9 @@ const StepContentDisplay = ({ content }) => {
             )}
             {content.note && (
                  <p className="text-sm mt-4 p-3 bg-blue-50 border border-blue-200 rounded-md text-blue-700 font-medium">
-                    <i className="fas fa-info-circle mr-2"></i><span className="font-semibold">Note:</span> {content.note}
+                    <i className="fas fa-info-circle mr-2"></i><span className="font-semibold">Note:</span>
+                    {/* Use dangerouslySetInnerHTML for the note content */}
+                    <span dangerouslySetInnerHTML={{ __html: content.note }} />
                 </p>
             )}
         </div>

@@ -5,8 +5,8 @@ export const siteData = [
         id: 'landing-page',
         type: 'landing',
         title: 'Adapting Historic Buildings for Flood Resilience',
-        // Add the new image URL property here
-        heroImageUrl: '/vthistflood/home-banner.jpg', // Assuming 'home-banner.jpg' is in your 'public' folder
+        heroImageUrl: '/vthistflood/home-banner.jpg', // Path to your image in the public folder, prefixed with the base path
+        heroImageAlt: 'Banner image for adapting historic buildings for flood resilience', // Descriptive alt text for your image
         mainDescription: 'Protecting our heritage requires thoughtful planning and action. Choose your path below to learn more about engineering processes or available funding.',
         actions: [
             { text: 'View Engineering Guide', icon: 'fa-hard-hat', target: 'engineering-hub', style: 'bg-blue-600 hover:bg-blue-500' },
@@ -75,13 +75,13 @@ export const siteData = [
             { text: 'Construction Phase', icon: 'fa-hard-hat', target: 'construction-section-hub', style: 'bg-blue-600 hover:bg-blue-500' },
         ]
     },
-    // NEW SECTION: Understanding Your Flood Risk
+    // Understanding Your Flood Risk
     {
         id: 'understanding-flood-risk-section',
         type: 'engineering-section-accordion',
         title: 'Understanding Your Flood Risk',
         previousStepId: 'engineering-hub',
-        introText: "Before designing any flood adaptation measures, it's crucial to understand the specific flood risks to your historic property. This involves reviewing official flood maps and potentially undertaking more detailed site assessments.",
+        introText: "Before designing any flood adaptation measures, it's very important to understand the specific flood risks to your historic property. This involves reviewing official flood maps and potentially undertaking more detailed site assessments.",
         steps: [
             {
                 id: 'flood-risk-step-1', title: 'Understanding FEMA Flood Maps',
@@ -101,7 +101,7 @@ export const siteData = [
                 content: {
                     description: 'While FEMA maps provide a broad overview, a detailed understanding of flood risk for a specific historic building often requires looking at site-specific elevations and may involve more advanced analysis by professionals.',
                     items: [
-                        '<strong>Building & Sill Elevation Data:</strong> Knowing the elevation of your building’s lowest floor and critical entry points (like door sills, sometimes referred to as "sill data") in relation to the Base Flood Elevation (BFE) is crucial. This comparison helps determine potential flood depths at your structure.',
+                        '<strong>Building & Sill Elevation Data:</strong> Knowing the elevation of your building’s lowest floor and key entry points (like door sills, sometimes referred to as "sill data") in relation to the Base Flood Elevation (BFE) is very important. This comparison helps determine potential flood depths at your structure.',
                         '<strong>Elevation Certificates (EC):</strong> An Elevation Certificate is a document prepared by a licensed land surveyor, engineer, or architect that provides detailed elevation information for a specific property. This includes the elevation of the lowest floor, lowest adjacent grade (LAG), and highest adjacent grade (HAG). ECs are often required for flood insurance rating and can be vital for designing effective flood mitigation.',
                         '<strong>Advanced GIS Analysis (e.g., ArcGIS):</strong> For complex sites or when highly detailed information is needed, professionals like engineers or floodplain managers might use Geographic Information Systems (GIS) software (such as ArcGIS). Conceptually, this involves:',
                         {
@@ -122,21 +122,54 @@ export const siteData = [
         ],
         nextSectionId: 'design-section-hub'
     },
-    // 4. Design Section Hub (Accordion Style) - (Original ID 4, now effectively 5th in engineering flow)
+    // 4. Design Section Hub (Accordion Style)
     {
         id: 'design-section-hub',
         type: 'engineering-section-accordion',
         title: 'Design Phase',
-        previousStepId: 'understanding-flood-risk-section', // UPDATED
-        introText: "The design phase is critical. It involves careful planning, assessment, and developing strategies that balance flood protection with preserving historic character. Expand the steps below for details.",
+        previousStepId: 'understanding-flood-risk-section',
+        introText: "The design phase is a key phase. It involves careful planning, assessment, and developing strategies that balance flood protection with preserving historic character. Expand the steps below for details.",
         steps: [
             {
                 id: 'design-step-1', title: 'Hire Design Professionals',
-                content: { description: 'Engage qualified professionals, including:', items: ['<strong>Structural Engineer:</strong> To assess the building\'s structural integrity and design necessary modifications.', '<strong>Architect:</strong> With expertise in historic preservation to ensure adaptations are sensitive to the building\'s historical significance.'], caution: 'Experience with historic buildings is essential.' }
+                content: {
+                    description: 'Engage qualified professionals, including:',
+                    items: [
+                        '<strong>Structural Engineer:</strong> To assess the building\'s structural integrity and design necessary modifications.',
+                        '<strong>Architect:</strong> With expertise in historic preservation to ensure adaptations are sensitive to the building\'s historical significance.'
+                    ],
+                    caution: 'Experience with historic buildings is essential.',
+                    note: `When engaging professionals, you will likely develop a Statement of Work (SOW) to define the initial assessment and feasibility tasks. 
+                           <a href="/vthistflood/documents/Example_SOW_Flood_Assessment.pdf" target="_blank" rel="noopener noreferrer" class="text-green-700 hover:text-green-600 hover:underline">View an example SOW here</a>. 
+                           This sample SOW details services like flood hazard assessment, code review, and an overview of potential mitigation strategies, which are typically foundational for a feasibility study.`
+                }
             },
             {
                 id: 'design-step-2', title: 'Feasibility Study',
-                content: { description: 'Conduct a comprehensive study to understand the flood risks (building on the initial risk assessment) and potential adaptation strategies.', items: [ '<strong>Confirm Flood Risk and Define Flood Hazards:</strong> Solidify understanding of flood elevation, sources of water intrusion, and potential impacts based on previous assessments.', '<strong>Identify Relevant Code Requirements:</strong> Research local, state, and federal regulations, including those related to historic preservation and floodplain management.', { text: '<strong>Identify Flood Mitigation Strategies:</strong> Explore various options, such as:', subItems: [ 'Wet Floodproofing: Allowing floodwater to enter the building while minimizing damage.', 'Dry Floodproofing: Making the building watertight.', 'Elevation: Raising the building above the flood level.', 'Relocation: Moving the building to a safer location (least preferred for historic structures).' ] }, '<strong>Recommend Flood Adaptation to Implement:</strong> Select the most suitable strategy based on the building\'s characteristics, risks, and preservation goals.', { text: '<strong>Consider Short-Term Adaptations:</strong> Implement non-permit measures like:', subItems: [ 'Installing flood shields for doors and windows.', 'Relocating valuable items to higher floors.', 'Developing a flood emergency plan.' ] }, '<strong>Obtain a Cost Estimate:</strong> Get a preliminary cost estimate from a contractor or cost estimator.' ] }
+                content: {
+                    description: 'Conduct a comprehensive study to understand the flood risks (building on the initial risk assessment) and potential adaptation strategies. This often follows the scope outlined in an initial SOW with your design professionals.',
+                    items: [
+                        '<strong>Confirm Flood Risk and Define Flood Hazards:</strong> Solidify understanding of flood elevation, sources of water intrusion, and potential impacts based on previous assessments.',
+                        '<strong>Identify Relevant Code Requirements:</strong> Research local, state, and federal regulations, including those related to historic preservation and floodplain management.',
+                        { text: '<strong>Identify Flood Mitigation Strategies:</strong> Explore various options, such as:',
+                          subItems: [
+                            'Wet Floodproofing: Allowing floodwater to enter the building while minimizing damage.',
+                            'Dry Floodproofing: Making the building watertight.',
+                            'Elevation: Raising the building above the flood level.',
+                            'Relocation: Moving the building to a safer location (least preferred for historic structures).'
+                          ]
+                        },
+                        '<strong>Recommend Flood Adaptation to Implement:</strong> Select the most suitable strategy based on the building\'s characteristics, risks, and preservation goals.',
+                        { text: '<strong>Consider Short-Term Adaptations:</strong> Implement non-permit measures like:',
+                          subItems: [
+                            'Installing flood shields for doors and windows.',
+                            'Relocating valuable items to higher floors.',
+                            'Developing a flood emergency plan.'
+                          ]
+                        },
+                        '<strong>Obtain a Cost Estimate:</strong> Get a preliminary cost estimate from a contractor or cost estimator.'
+                    ]
+                }
             },
             {
                 id: 'design-step-3', title: 'Design Development',
@@ -149,12 +182,12 @@ export const siteData = [
         ],
         nextSectionId: 'permitting-section-hub'
     },
-    // 5. Permitting & Bidding Section Hub (Accordion Style) - (Original ID 5, now effectively 6th)
+    // 5. Permitting & Bidding Section Hub (Accordion Style)
     {
         id: 'permitting-section-hub',
         type: 'engineering-section-accordion',
         title: 'Permitting & Bidding',
-        previousStepId: 'design-section-hub', // This remains correct as Design now leads to Permitting
+        previousStepId: 'design-section-hub',
         introText: "This phase involves obtaining necessary permits and selecting a qualified contractor. Expand the step below for details.",
         steps: [
             {
@@ -164,12 +197,12 @@ export const siteData = [
         ],
         nextSectionId: 'construction-section-hub'
     },
-    // 6. Construction Section Hub (Accordion Style) - (Original ID 6, now effectively 7th)
+    // 6. Construction Section Hub (Accordion Style)
     {
         id: 'construction-section-hub',
         type: 'engineering-section-accordion',
         title: 'Construction Phase',
-        previousStepId: 'permitting-section-hub', // This remains correct
+        previousStepId: 'permitting-section-hub',
         introText: "This phase covers the execution of the flood adaptation project according to the approved design and schedule. Expand the step below for details. The conclusion of the engineering guide will return you to the main menu.",
         steps: [
             {
@@ -177,6 +210,6 @@ export const siteData = [
                 content: { description: 'Execute the flood adaptation project according to the approved design and schedule.', items: [ '<strong>Review the Construction Schedule & Final Budget:</strong> Ensure the project stays on track and within budget.', '<strong>Build the Flood Adaptation:</strong> Oversee the construction process, ensuring compliance with the design documents, building codes, and historic preservation guidelines.' ] }
             }
         ],
-        nextSectionId: 'landing-page' // Assuming this takes them back to the main menu after the final engineering section.
+        nextSectionId: 'landing-page'
     },
 ];
