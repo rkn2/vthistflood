@@ -141,7 +141,7 @@ export const siteData = [
                     caution: 'Experience with historic buildings is essential.',
                     note: `When engaging professionals, you will likely develop a Statement of Work (SOW) to define the initial assessment and feasibility tasks. 
                            <a href="/vthistflood/documents/Example_SOW_Flood_Assessment.pdf" target="_blank" rel="noopener noreferrer" class="text-green-700 hover:text-green-600 hover:underline">View an example SOW here</a>. 
-                           This sample SOW details services like flood hazard assessment, code review, and an overview of potential mitigation strategies, which are typically foundational for a feasibility study.`
+                           For a list of professionals, you can also consult the <a href="https://ptvermont.org/vermontrestorationdirectory/" target="_blank" rel="noopener noreferrer" class="text-green-700 hover:text-green-600 hover:underline">Preservation Trust of Vermont's Restoration Directory</a>.`
                 }
             },
             {
