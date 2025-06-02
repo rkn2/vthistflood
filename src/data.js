@@ -12,7 +12,7 @@ export const siteData = [
             { text: 'View Engineering Guide', icon: 'fa-hard-hat', target: 'engineering-hub', style: 'bg-blue-600 hover:bg-blue-500' },
             { text: 'Explore Funding Options', icon: 'fa-dollar-sign', target: 'funding-options', style: 'bg-green-600 hover:bg-green-500' }
         ],
-        footerText: 'The engineering guide provides a step-by-step process for planning and executing flood adaptation projects. Funding options explore potential grants, loans, and other financial resources.'
+        footerText: 'The engineering guide provides a step-by-step process for planning and executing flood adaptation projects. Funding options explore potential grants, loans, and other financial resources. For more information please reach out to the Association of Preservation Technology International Disaster Response Initative at (driATaptiDOTorg)'
     },
     // 2. Funding Options Page
     {
