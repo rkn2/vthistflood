@@ -102,12 +102,73 @@ For production applications, it's recommended to use TypeScript with type-aware 
 
 ## Deployment to GitHub Pages
 
-The project is configured for deployment to GitHub Pages.
-The `vite.config.js` file sets the `base` path to `/vthistflood/`, which should match your repository name for correct asset loading on GitHub Pages.
+This project is configured for automated deployment to GitHub Pages using GitHub Actions. The workflow is triggered on every push to the `main` branch. It will build the application and push the contents of the `dist` folder to the `gh-pages` branch, which is the publishing source for your site.
 
-To deploy:
-1.  Ensure your repository is named `vthistflood` or update the `base` path in `vite.config.js` and the `homepage` field in `package.json` (if you add one).
-2.  Run `npm run deploy`.
+### Automated Deployment Setup
+
+To enable automated deployment, you need to provide the workflow with a Personal Access Token (PAT) with permissions to write to your repository.
+
+**Step 1: Generate a Personal Access Token (PAT)**
+
+1.  Navigate to your GitHub **Settings** \> **Developer settings** \> **Personal access tokens** \> **Tokens (classic)**.
+2.  Click **Generate new token**.
+3.  Give the token a descriptive name (e.g., `GH_PAGES_DEPLOY`).
+4.  Set an expiration date for the token.
+5.  Under **Select scopes**, check the `repo` scope.
+6.  Click **Generate token** and copy the token immediately. You will not be able to see it again.
+
+**Step 2: Add the Token as a Repository Secret**
+
+1.  In your GitHub repository, go to the **Settings** tab.
+2.  In the left sidebar, navigate to **Secrets and variables** \> **Actions**.
+3.  Click **New repository secret**.
+4.  For the **Name**, enter `GH_TOKEN`.
+5.  In the **Value** field, paste the personal access token you just generated.
+6.  Click **Add secret**.
+
+**Step 3: Create the GitHub Actions Workflow**
+
+1.  Create a directory named `.github/workflows` in the root of your project if it doesn't already exist.
+
+2.  Inside that directory, create a file named `deploy.yml`.
+
+3.  Add the following content to the `deploy.yml` file:
+
+    ```yaml
+    name: Deploy to GitHub Pages
+
+    on:
+      push:
+        branches:
+          - main # Or your default branch
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v3
+
+          - name: Set up Node.js
+            uses: actions/setup-node@v3
+            with:
+              node-version: '20.x'
+
+          - name: Install dependencies
+            run: npm install
+
+          - name: Build project
+            run: npm run build
+
+          - name: Deploy to GitHub Pages
+            uses: peaceiris/actions-gh-pages@v3
+            with:
+              github_token: ${{ secrets.GH_TOKEN }}
+              publish_dir: ./dist
+    ```
+
+Once this is set up, any push to your `main` branch will automatically trigger the deployment process. You no longer need to run `npm run deploy` manually from your local machine.
+
 
 ## Important Notes for UI
 
